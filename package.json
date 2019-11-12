@@ -1,0 +1,26 @@
+{
+  "name": "banchan",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "express": "^4.17.1",
+    "global": "^4.4.0",
+    "next": "9.1.2",
+    "next-page-transitions": "^1.0.0-beta.2",
+    "node-sass": "^4.13.0",
+    "now": "^16.4.4",
+    "react": "16.11.0",
+    "react-dom": "16.11.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
+    "eslint-plugin-react": "^7.16.0"
+  }
+}
