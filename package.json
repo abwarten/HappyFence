@@ -1,11 +1,12 @@
 {
-  "name": "banchan",
+  "name": "HappyFence",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint pages/**/*.js"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.6.0",
-    "eslint-plugin-react": "^7.16.0"
+    "eslint-plugin-react": "^7.16.0",
+    "prettier": "^1.19.1"
   }
 }
