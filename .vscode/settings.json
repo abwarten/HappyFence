@@ -1,0 +1,6 @@
+{
+    "prettier.jsonEnable": [], // Will disable Prettier Misc on JSON files
+    "prettier.openOutput": false,
+    "editor.formatOnSave": true,
+    "eslint.autoFixOnSave": true
+}

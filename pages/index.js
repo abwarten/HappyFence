@@ -1,5 +1,5 @@
 import NavList from '../components/NavList'
-import MainImage from '../components/MainPage'
+import MainImage from '../components/MainImage'
 
 function Index() {
   return (

@@ -1,23 +1,23 @@
-import App, { Container } from 'next/app'
-import React from 'react'
-import { PageTransition } from 'next-page-transitions'
+import App, { Container } from "next/app";
+import React from "react";
+import { PageTransition } from "next-page-transitions";
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
-    let pageProps = {}
+    let pageProps = {};
 
     if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
+      pageProps = await Component.getInitialProps(ctx);
     }
 
-    return { pageProps }
+    return { pageProps };
   }
 
   render() {
-    const { Component, pageProps, router } = this.props
+    const { Component, pageProps, router } = this.props;
     return (
       <Container>
-        <PageTransition timeout={300} classNames="page-transition">
+        <PageTransition timeout={300} classNames='page-transition'>
           <Component {...pageProps} key={router.route} />
         </PageTransition>
         <style jsx global>{`
@@ -37,6 +37,6 @@ export default class MyApp extends App {
           }
         `}</style>
       </Container>
-    )
+    );
   }
 }
