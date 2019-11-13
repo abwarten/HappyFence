@@ -16,8 +16,8 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps, router } = this.props;
     return (
-      <Container>
-        <PageTransition timeout={300} classNames='page-transition'>
+      <>
+        <PageTransition timeout={300} classNames="page-transition">
           <Component {...pageProps} key={router.route} />
         </PageTransition>
         <style jsx global>{`
@@ -36,7 +36,7 @@ export default class MyApp extends App {
             transition: opacity 200ms;
           }
         `}</style>
-      </Container>
+      </>
     );
   }
 }
