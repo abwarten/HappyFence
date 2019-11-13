@@ -1,17 +1,41 @@
-.MainImage {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: gray;
-	background-image: url("/static/platter.jpg");
-	height: 600px;
-	width: 100%;
-	background-repeat: no-repeat;
-	p {
-		color: white;
-		font-weight: bold;
-		font-family: 'Nanum Gothic', sans-serif;
-		font-size: 80px;
-		margin-top: 0;
+@import './mixin.scss';
+
+@include pc-only {
+	.MainImage {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: gray;
+		background-image: url("/static/platter.jpg");
+		height: 600px;
+		width: 100%;
+		background-repeat: no-repeat;
+		p {
+			color: white;
+			font-weight: bold;
+			font-family: 'Nanum Gothic', sans-serif;
+			font-size: 80px;
+			margin-top: 0;
+		}
+	}
+}
+
+@include tab {
+	.MainImage {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: gray;
+		background-image: url("/static/platter.jpg");
+		height: 600px;
+		width: 100%;
+		background-repeat: no-repeat;
+		p {
+			color: white;
+			font-weight: bold;
+			font-family: 'Nanum Gothic', sans-serif;
+			font-size: 40px;
+			margin-top: 0;
+		}
 	}
 }
