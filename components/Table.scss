@@ -1,0 +1,16 @@
+@import './mixin.scss';
+
+@include pc-only {
+	.TableTitle {
+		text-align: center;
+	}
+	.TableLayout {
+		width: 1200px;
+	}
+}
+
+@include tab {
+	.TableLayout {
+		width: 800px;
+	}
+}

@@ -1,0 +1,37 @@
+@import './mixin.scss';
+
+@include pc-only {
+	.square {
+		display: inline-block;
+		margin: 5px;
+		padding-top: 12px;
+		width: 150px;
+		height: 130px;
+		border: 1px solid #cccccc;
+		border-radius: 10px;
+		font-size: 15px;
+		p {
+			margin-top: 3px;
+			margin-bottom: 5px;
+			text-align: center;
+		}
+	}
+}
+
+@include tab {
+	.square {
+		display: inline-block;
+		margin: 5px;
+		padding-top: 12px;
+		width: 100px;
+		height: 90px;
+		border: 1px solid #cccccc;
+		border-radius: 10px;
+		font-size: 11px;
+		p {
+			margin-top: 3px;
+			margin-bottom: 5px;
+			text-align: center;
+		}
+	}
+}
