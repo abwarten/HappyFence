@@ -1,9 +1,6 @@
 @import './mixin.scss';
 
 @include pc-only {
-	.TableTitle {
-		text-align: center;
-	}
 	.TableLayout {
 		width: 1200px;
 	}
@@ -13,4 +10,8 @@
 	.TableLayout {
 		width: 800px;
 	}
+}
+
+.TableTitle {
+	text-align: center;
 }
