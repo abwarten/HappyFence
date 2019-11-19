@@ -1,13 +1,9 @@
 .ContactButtonLayout {
-	position: absolute;
-	left: 50%;
-	top: 55%;
-	transform: translateX(-50%);
+	text-align: center;
 }
 .ContactButton {
 	display: inline-block;
 	padding: 6px 12px;
-	margin-bottom: 0;
 	font-weight: bold;
 	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 25px;
@@ -30,7 +26,6 @@
 
 	color: black;
 	background-color: white;
-	border-color: #ccc;
 	width: 150px;
 }
 .ContactButton:hover {

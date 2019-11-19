@@ -1,0 +1,51 @@
+@import './mixin.scss';
+
+@include pc-only {
+	.DayListLayout {
+		display: flex;
+		background-color: white;
+		width: 1120px;
+		height: 60px;
+		margin: 0 auto;
+		padding: 0;
+		border: 1px solid #ccc;
+		border-radius: 30px;
+		li {
+			display: inline;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-right: 132px;
+			font-size: 30px;
+			padding: 0;
+		}
+		li:first-child {
+			margin-left: 60px;
+			margin-right: 130px;
+		}
+	}
+}
+
+@include tab {
+	.DayListLayout {
+		display: flex;
+		background-color: white;
+		width: 773px;
+		height: 60px;
+		margin: 0 auto;
+		padding: 0;
+		border: 1px solid #ccc;
+		border-radius: 30px;
+		li {
+			display: inline;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-right: 82px;
+			font-size: 30px;
+			padding: 0;
+		}
+		li:first-child {
+			margin-left: 35px;
+			margin-right: 80px;
+		}
+	}
+}

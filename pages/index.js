@@ -1,6 +1,6 @@
 import NavList from '../components/NavList'
 import MainImage from '../components/MainImage'
-import IntroDuction from '../components/Introduction'
+import Introduce from '../components/Introduce'
 import Footer from '../components/Footer'
 import Table from '../components/Table'
 
@@ -9,7 +9,7 @@ function Index() {
     <>
       <NavList />
       <MainImage />
-      <IntroDuction/>
+      <Introduce/>
       <Table />
       <Footer />
       

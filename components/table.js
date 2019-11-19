@@ -1,4 +1,5 @@
 import Square from './Square';
+import DayList from './DayList';
 import './Table.scss';
 
 class Table extends React.Component {
@@ -11,14 +12,16 @@ class Table extends React.Component {
 	}
 	render() {
 		return (
-			<>
-			<p className="TableTitle">월간식단표</p>
-			<div className="TableLayout">
-				{new Array(49).fill(0).map((item, i) => {
-					return <Square banchan_1={item.banchan_1} key={i} />;
-				})}
+			<div className="TableContainer">
+				<h3 className="TableTitle">월간식단표</h3>
+				<DayList />
+				<div className="TableLayout">
+					{new Array(35).fill(0).map((item, i) => {
+						return <Square banchan_1={item.banchan_1} key={i} />;
+					})}
+				</div>
+				<p className="TableSubTitle">시장상황에 따라 메뉴의 변동이 있을 수 있습니다</p>
 			</div>
-			</>
 		);
 	}
 }

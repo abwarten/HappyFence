@@ -3,7 +3,7 @@ import React from "react";
 import { PageTransition } from "next-page-transitions";
 
 export default class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {

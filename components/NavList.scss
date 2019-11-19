@@ -1,24 +1,53 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
+@import './mixin.scss';
 
-.Nav {
-  display: flex;
-  align-items: center;
+@include pc-only {
+	.Nav {
+		display: flex;
+		align-items: center;
+	}
+
+	.NavList {
+		margin-left: 10px;
+		margin-right: 15px;
+		font-family: 'Nanum Gothic', sans-serif;
+		font-size: 30px;
+		text-decoration: none;
+		color: black;
+	}
+
+	.Logo {
+		margin-left: 10px;
+		margin-right: 200px;
+		img {
+			width: 70px;
+			height: 70px;
+		}
+	}
 }
 
-.NavList {
-  margin-left: 10px;
-  margin-right: 15px;
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: 30px;
-  text-decoration: none;
-  color: black;
-}
+@include tab {
+	.Nav {
+		display: flex;
+		align-items: center;
+		background-color: white;
+	}
 
-.Logo {
-  margin-left: 10px;
-  margin-right: 200px;
-  img {
-    width: 70px;
-    height: 70px;
-  }
+	.NavList {
+		margin-left: 10px;
+		margin-right: 15px;
+		font-family: 'Nanum Gothic', sans-serif;
+		font-size: 30px;
+		text-decoration: none;
+		color: black;
+	}
+
+	.Logo {
+		margin-left: 10px;
+		margin-right: 100px;
+		img {
+			width: 70px;
+			height: 70px;
+		}
+	}
 }

@@ -3,14 +3,15 @@
 @include pc-only {
 	.square {
 		display: inline-block;
+		background-color: white;
 		margin: 5px;
 		padding-top: 12px;
 		width: 150px;
 		height: 130px;
 		border: 1px solid #cccccc;
-		border-radius: 10px;
-		font-size: 15px;
-		box-shadow: 0px 10px 13px -7px #000000;
+		border-radius: 5px;
+		font-size: 1em;
+		box-shadow: 0px 10px 13px -7px #cccccc;
 		p {
 			margin-top: 8px;
 			margin-bottom: 3px;
@@ -22,14 +23,15 @@
 @include tab {
 	.square {
 		display: inline-block;
+		background-color: white;
 		margin: 5px;
 		padding-top: 12px;
 		width: 100px;
 		height: 90px;
 		border: 1px solid #cccccc;
-		border-radius: 10px;
-		font-size: 11px;
-		box-shadow: 0px 10px 13px -7px #000000;
+		border-radius: 5px;
+		font-size: 0.7em;
+		box-shadow: 0px 5px 7px -4px #cccccc;
 		p {
 			margin-top: 3px;
 			margin-bottom: 5px;
