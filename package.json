@@ -19,7 +19,9 @@
     "node-sass": "^4.13.0",
     "now": "^16.4.4",
     "react": "16.11.0",
-    "react-dom": "16.11.0"
+    "react-dom": "16.11.0",
+    "serverless-mysql": "^1.5.1",
+    "sql-template-strings": "^2.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
@@ -31,6 +33,7 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-react-require": "^3.1.1",
+    "dotenv": "^8.2.0",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
     "lodash": "^4.17.15",

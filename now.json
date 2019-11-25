@@ -1,4 +1,12 @@
 {
+    "version": 2,
     "name": "HappyFenceProject-master",
+    "env": {
+        "MYSQL_HOST": "happyfence.mysql.database.azure.com",
+        "MYSQL_USER": "a1061602@happyfence",
+        "MYSQL_PASSWORD": "aywhr9324200@",
+        "MYSQL_DATABASE": "happyfence",
+        "MYSQL_PORT": "3306"
+    },
     "regions": ["icn1"]
 }
