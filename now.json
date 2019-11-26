@@ -1,12 +1,19 @@
 {
     "version": 2,
     "name": "HappyFenceProject-master",
+    "routes": [
+        {
+            "src": "/api/hello",
+            "dest": "./api/hello.js",
+            "methods": ["POST"]
+        }
+    ],
     "env": {
-        "MYSQL_HOST": "happyfence.mysql.database.azure.com",
-        "MYSQL_USER": "a1061602@happyfence",
-        "MYSQL_PASSWORD": "aywhr9324200@",
-        "MYSQL_DATABASE": "happyfence",
-        "MYSQL_PORT": "3306"
+        "MYSQL_HOST": "@mysql_host",
+        "MYSQL_USER": "@mysql_user",
+        "MYSQL_PASSWORD": "@mysql_password",
+        "MYSQL_DATABASE": "@mysql_database",
+        "MYSQL_PORT": "@mysql_port"
     },
     "regions": ["icn1"]
 }

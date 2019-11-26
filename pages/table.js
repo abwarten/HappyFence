@@ -1,4 +1,6 @@
 import NavList from '../components/NavList'
+import Table from '../components/Table'
+import Footer from '../components/Footer'
 
 class table extends React.Component {
   static pageTransitionDelayEnter = true
@@ -24,6 +26,8 @@ class table extends React.Component {
     return (
       <>
         <NavList />
+        <Table/>
+        <Footer />
         <style jsx global>{`
           body {
             margin: 0;

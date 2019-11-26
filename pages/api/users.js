@@ -7,5 +7,5 @@ module.exports = async (req, res) => {
       FROM profiles
     `);
 
-	res.send({ profiles });
+	res.status(200).json({ profiles });
 };
