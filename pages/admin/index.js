@@ -1,24 +1,44 @@
-import fetch from 'isomorphic-unfetch';
+import AdminLeftNav from '../../components/AdminLeftNav';
+import Link from 'next/link';
+import { connect } from 'react-redux';
+import Router from 'next/router';
 
-function Admin({ props }) {
-	return (
-		<div>
-			{props.profiles.map((user) => (
-				<div key={user.id}>
-					<div>{user.name}</div>
-					<div>{user.email}</div>
-				</div>
-			))}
-		</div>
-	);
+class Index extends React.Component {
+	static async getInitialProps({ reduxStore, res }) {
+		// if (!reduxStore.getState().isAuth) {
+		// 	if (res) {
+		// 		res.writeHead(302, {
+		// 			Location: '/signin'
+		// 		});
+		// 		res.end();
+		// 	} else {
+		// 		Router.push('/signin');
+		// 	}
+		// 	return {};
+		// }
+	}
+
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<div>
+				<div>{this.props.isAuth ? <div>login</div> : <div>not login</div>}</div>
+				<Link href="/">
+					<a>링크</a>
+				</Link>
+			</div>
+		);
+	}
 }
 
-Admin.getInitialProps = async ({ req }) => {
-	const host = req ? `http://${req.headers.host}` : '';
-	const res = await fetch(`${host}/api/users`);
-	const json = await res.json();
+const mapStateToProps = (state) => ({
+	token: state.token,
+	isAuth: state.isAuth
+});
 
-	return { props: json };
-};
+const mapDispatchToProps = (dispatch) => ({});
 
-export default Admin;
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

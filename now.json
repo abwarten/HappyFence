@@ -1,10 +1,19 @@
 {
     "version": 2,
     "name": "HappyFenceProject-master",
+    "builds": [
+        { "src": "package.json", "use": "@now/next" },
+        { "src": "server.js", "use": "@now/node" }
+    ],
     "routes": [
         {
-            "src": "/api/hello",
-            "dest": "./api/hello.js",
+            "src": "/api/register",
+            "dest": "/pages/api/register.js",
+            "methods": ["POST"]
+        },
+        {
+            "src": "/api/user",
+            "dest": "/pages/api/users.js",
             "methods": ["POST"]
         }
     ],

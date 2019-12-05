@@ -1,7 +1,9 @@
+import './TodayPhotoComponent.scss';
+
 const TodayPhoto = () => (
-	<div>
-		<p>todayphoto component</p>
-	</div>
+	<figure className="FoodCardImage filter-nomal">
+		<img className="FoodCardImage" src="/static/ex1.jpg" />
+	</figure>
 );
 
 export default TodayPhoto;

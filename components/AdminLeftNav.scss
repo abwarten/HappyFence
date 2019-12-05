@@ -1,0 +1,19 @@
+.left {
+	width: 20%;
+	float: left;
+	border-right: 1px solid #999;
+}
+
+.nav {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	li {
+		a {
+			display: block;
+			line-height: 3em;
+			width: 100%;
+			text-decoration: none;
+		}
+	}
+}
