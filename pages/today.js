@@ -1,18 +1,18 @@
 import NavList from '../components/NavList'
-
+import TodayPhoto from '../components/TodayPhotoComponent'
+import Footer from '../components/Footer'
 class today extends React.Component {
-  static pageTransitionDelayEnter = true
- 
   constructor(props) {
     super(props)
-    this.state = { loaded: false }
+
   }
 
- 
   render() {
     return (
       <>
         <NavList />
+        <TodayPhoto/>
+        <Footer/>
         <style jsx global>{`
           body {
             margin: 0;

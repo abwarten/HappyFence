@@ -1,64 +1,53 @@
 import React from 'react';
-import axios from 'axios';
-import Link from 'next/link';
 import { connect } from 'react-redux';
-
-import { register } from '../lib/network';
+// import auth from '../state/auth';
+import Router from 'next/router';
 
 class Register extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			email: '',
-			password1: '',
-			password2: ''
+			username: '',
+			password: ''
 		};
 
-		this.handleEmailChange = this.handleEmailChange.bind(this);
-		this.handlePasswordChange1 = this.handlePasswordChange1.bind(this);
-		this.handlePasswordChange2 = this.handlePasswordChange2.bind(this);
+		this.handleUsernameChange = this.handleUsernameChange.bind(this);
+		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleEmailChange(e) {
+	handleUsernameChange(e) {
 		this.setState({
-			email: e.target.value
+			username: e.target.value
 		});
 	}
 
-	handlePasswordChange1(e) {
+	handlePasswordChange(e) {
 		this.setState({
-			password1: e.target.value
-		});
-	}
-
-	handlePasswordChange2(e) {
-		this.setState({
-			password2: e.target.value
+			password: e.target.value
 		});
 	}
 
 	handleSubmit(e) {
 		e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-		register(this.props.token, this.state.email, this.state.password1, this.state.password2);
+		// this.props.register(this.state.username, this.state.password);
 	}
 
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
-				<input type="email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange} />
 				<input
-					type="password"
-					placeholder="Password"
-					value={this.state.password1}
-					onChange={this.handlePasswordChange1}
+					type="username"
+					placeholder="Username"
+					value={this.state.username}
+					onChange={this.handleUsernameChange}
 				/>
 				<input
 					type="password"
 					placeholder="Password"
-					value={this.state.password2}
-					onChange={this.handlePasswordChange2}
+					value={this.state.password}
+					onChange={this.handlePasswordChange}
 				/>
 				<input type="submit" value="회원가입" />
 			</form>
@@ -66,12 +55,23 @@ class Register extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	error: state.register_error
-});
+const mapStateToProps = (state) => {
+	let errors = [];
+	if (state.auth.errors) {
+		errors = Object.keys(state.auth.errors).map((field) => {
+			return { field, message: state.auth.errors[field] };
+		});
+	}
+	return {
+		errors,
+		isAuthenticated: state.auth.isAuthenticated
+	};
+};
 
-const mapDispatchToProps = (dispatch) => ({
-	token: dispatch
-});
+const mapDispatchToProps = (dispatch) => {
+	return {
+		register: (username, password) => dispatch(auth.register(username, password))
+	};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -1,44 +1,44 @@
-import AdminLeftNav from '../../components/AdminLeftNav';
-import Link from 'next/link';
-import { connect } from 'react-redux';
+import React from 'react';
 import Router from 'next/router';
+import fetch from 'isomorphic-unfetch';
+import nextCookie from 'next-cookies';
+import { withAuthSync } from '../../utils/auth';
+import getHost from '../../utils/get-host';
 
-class Index extends React.Component {
-	static async getInitialProps({ reduxStore, res }) {
-		// if (!reduxStore.getState().isAuth) {
-		// 	if (res) {
-		// 		res.writeHead(302, {
-		// 			Location: '/signin'
-		// 		});
-		// 		res.end();
-		// 	} else {
-		// 		Router.push('/signin');
-		// 	}
-		// 	return {};
-		// }
+const Profile = (props) => {
+	const { id, username } = props.data;
+
+	return (
+		<div>
+			<h1>{username}</h1>
+		</div>
+	);
+};
+
+Profile.getInitialProps = async (ctx) => {
+	const { token } = nextCookie(ctx);
+	const apiUrl = getHost(ctx.req) + '/api/admin';
+
+	const redirectOnError = () =>
+		typeof window !== 'undefined' ? Router.push('/signin') : ctx.res.writeHead(302, { Location: '/signin' }).end();
+
+	try {
+		const response = await fetch(apiUrl, {
+			credentials: 'include',
+			headers: {
+				Authorization: token
+			}
+		});
+
+		if (response.ok) {
+			const js = await response.json();
+			return js;
+		} else {
+			return await redirectOnError();
+		}
+	} catch (error) {
+		return redirectOnError();
 	}
+};
 
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<div>
-				<div>{this.props.isAuth ? <div>login</div> : <div>not login</div>}</div>
-				<Link href="/">
-					<a>링크</a>
-				</Link>
-			</div>
-		);
-	}
-}
-
-const mapStateToProps = (state) => ({
-	token: state.token,
-	isAuth: state.isAuth
-});
-
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default withAuthSync(Profile);

@@ -1,18 +1,20 @@
 import NavList from '../components/NavList'
+import ContactList from '../components/ContactList'
+import Footer from '../components/Footer'
 
 class contact extends React.Component {
-  static pageTransitionDelayEnter = true
 
   constructor(props) {
     super(props)
-    this.state = { loaded: false }
+   
   }
 
   render() {
     return (
       <>
         <NavList />
-        <p>contact page</p>
+        <ContactList />
+        <Footer/>
         <style jsx global>{`
           body {
             margin: 0;

@@ -1,58 +1,71 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { login } from '../lib/network';
+import React, { useState } from 'react';
+import fetch from 'isomorphic-unfetch';
+import { login } from '../utils/auth';
 
-class Login extends React.Component {
-	constructor(props) {
-		super(props);
+function Login() {
+	const [ userData, setUserData ] = useState({ username: '', password: '', error: '' });
 
-		this.state = {
-			email: '',
-			password: ''
-		};
+	async function handleSubmit(event) {
+		event.preventDefault();
+		setUserData(Object.assign({}, userData, { error: '' }));
 
-		this.handleEmailChange = this.handleEmailChange.bind(this);
-		this.handlePasswordChange = this.handlePasswordChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
+		const username = userData.username;
+		const password = userData.password;
+		const url = `http://127.0.0.1:8000/api/v1/auth/login/`;
+
+		try {
+			const response = await fetch(url, {
+				method: 'POST',
+
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ username, password })
+			});
+
+			if (response.status === 200) {
+				const { token } = await response.json();
+				await login({ token });
+			} else {
+				console.log('Login failed.');
+				let error = new Error(response.statusText);
+				error.response = response;
+				throw error;
+			}
+		} catch (error) {
+			console.error('You have an error in your code or there are Network issues.', error);
+
+			const { response } = error;
+			setUserData(
+				Object.assign({}, userData, {
+					error: response ? response.statusText : error.message
+				})
+			);
+		}
 	}
 
-	handleEmailChange(e) {
-		this.setState({
-			email: e.target.value
-		});
-	}
-
-	handlePasswordChange(e) {
-		this.setState({
-			password: e.target.value
-		});
-	}
-
-	handleSubmit(e) {
-		e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-
-		login(this.props.token, this.state.email, this.state.password);
-	}
-
-	render() {
-		return (
-			<form onSubmit={this.handleSubmit}>
-				<input type="email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange} />
+	return (
+		<div>
+			<form onSubmit={handleSubmit}>
+				<input
+					type="username"
+					id="username"
+					name="username"
+					value={userData.username}
+					onChange={(event) => setUserData(Object.assign({}, userData, { username: event.target.value }))}
+				/>
 				<input
 					type="password"
-					placeholder="Password"
-					value={this.state.password}
-					onChange={this.handlePasswordChange}
+					id="password"
+					name="password"
+					value={userData.password}
+					onChange={(event) => setUserData(Object.assign({}, userData, { password: event.target.value }))}
 				/>
-				<input type="submit" value="로그인" />
+
+				<button type="submit">Login</button>
+
+				{userData.error && <p className="error">Error: {userData.error}</p>}
 			</form>
-		);
-	}
+		</div>
+	);
 }
 
-const mapStateToProps = (state) => ({});
-const mapDispatchToProps = (dispatch) => ({
-	token: dispatch,
-	isAuth: true
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
