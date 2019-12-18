@@ -1,4 +1,5 @@
 import './Footer.scss'
+import Link from 'next/link'
 
 function Footer() {
     return (
@@ -17,6 +18,11 @@ function Footer() {
           <div>
             <p> 사업자등록번호: 123-123-1231 </p>
             <p> 전화번호: 010-2361-7348 </p>
+          </div>
+          <div>
+            <Link href="/admin">
+              <a>관리자</a>
+            </Link>
           </div>
         </div>
         </>

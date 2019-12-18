@@ -46,7 +46,7 @@ function Login() {
 		<div>
 			<form onSubmit={handleSubmit}>
 				<input
-					type="username"
+					type="text"
 					id="username"
 					name="username"
 					value={userData.username}

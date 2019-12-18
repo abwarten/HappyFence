@@ -5,17 +5,19 @@ import nextCookie from 'next-cookies';
 import { withAuthSync } from '../../utils/auth';
 import getHost from '../../utils/get-host';
 
-const Profile = (props) => {
-	const { username } = props.data;
+import AdminContactList from '../../components/AdminContactList';
+
+const AdminContact = (props) => {
+	// const token = props.token;
 
 	return (
-		<div>
-			<h1>{username}</h1>
-		</div>
+		<>
+			<AdminContactList />
+		</>
 	);
 };
 
-Profile.getInitialProps = async (ctx) => {
+AdminContact.getInitialProps = async (ctx) => {
 	const { token } = nextCookie(ctx);
 	const apiUrl = getHost(ctx.req) + '/api/admin';
 
@@ -41,4 +43,4 @@ Profile.getInitialProps = async (ctx) => {
 	}
 };
 
-export default withAuthSync(Profile);
+export default withAuthSync(AdminContact);

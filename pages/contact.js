@@ -1,5 +1,5 @@
 import NavList from '../components/NavList'
-import ContactList from '../components/ContactList'
+import ContactLForm from '../components/ContactLForm'
 import Footer from '../components/Footer'
 
 class contact extends React.Component {
@@ -13,7 +13,7 @@ class contact extends React.Component {
     return (
       <>
         <NavList />
-        <ContactList />
+        <ContactLForm />
         <Footer/>
         <style jsx global>{`
           body {
