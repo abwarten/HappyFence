@@ -2,39 +2,36 @@ import React from 'react';
 import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import nextCookie from 'next-cookies';
-import { withAuthSync } from '../../utils/auth';
-import getHost from '../../utils/get-host';
+import { withAuthSync } from '../../../utils/auth';
 
-import AdminContactList from '../../components/AdminContactList';
+import AdminContactList from '../../../components/AdminContactList';
 
 const AdminContact = (props) => {
-	// const token = props.token;
-
 	return (
 		<>
-			<AdminContactList />
+			<AdminContactList props={props}/>
 		</>
 	);
 };
 
 AdminContact.getInitialProps = async (ctx) => {
 	const { token } = nextCookie(ctx);
-	const apiUrl = getHost(ctx.req) + '/api/admin';
+	const apiUrl = `http://localhost:8000/api/v1/contact/`;
 
 	const redirectOnError = () =>
 		typeof window !== 'undefined' ? Router.push('/signin') : ctx.res.writeHead(302, { Location: '/signin' }).end();
 
 	try {
 		const response = await fetch(apiUrl, {
-			credentials: 'include',
+			method: 'GET',
 			headers: {
-				Authorization: token
+				Authorization: 'Token ' + token
 			}
 		});
 
 		if (response.ok) {
-			const js = await response.json();
-			return js;
+			const contacts = await response.json();
+			return contacts;
 		} else {
 			return await redirectOnError();
 		}

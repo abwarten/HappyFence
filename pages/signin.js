@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 import { login } from '../utils/auth';
+import nextCookie from 'next-cookies';
+import Router from 'next/router';
 
 function Login() {
 	const [ userData, setUserData ] = useState({ username: '', password: '', error: '' });
@@ -16,8 +18,9 @@ function Login() {
 		try {
 			const response = await fetch(url, {
 				method: 'POST',
-
-				headers: { 'Content-Type': 'application/json' },
+				headers: {
+					'Content-Type': 'application/json'
+				},
 				body: JSON.stringify({ username, password })
 			});
 
@@ -67,5 +70,16 @@ function Login() {
 		</div>
 	);
 }
+
+Login.getInitialProps = async (ctx) => {
+	const { token } = nextCookie(ctx);
+
+	const redirectOnAdmin = () =>
+		typeof window !== 'undefined' ? Router.push('/admin') : ctx.res.writeHead(302, { Location: '/admin' }).end();
+
+	if (token !== undefined) {
+		redirectOnAdmin();
+	}
+};
 
 export default Login;

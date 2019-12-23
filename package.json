@@ -16,6 +16,7 @@
     "@zeit/next-sass": "^1.0.1",
     "cookie-parser": "^1.4.4",
     "core-js": "2",
+    "cors": "^2.8.5",
     "es6-promise": "^4.2.8",
     "express": "^4.17.1",
     "global": "^4.4.0",

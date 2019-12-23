@@ -4,13 +4,19 @@ import fetch from 'isomorphic-unfetch';
 import nextCookie from 'next-cookies';
 import { withAuthSync } from '../../utils/auth';
 import getHost from '../../utils/get-host';
+import Link from 'next/link';
 
 const Profile = (props) => {
 	const { username } = props.data;
 
 	return (
 		<div>
-			<h1>{username}</h1>
+			<Link href="/admin/contact">
+				<a>contact</a>
+			</Link>
+			<Link href="/admin/today">
+				<a>today</a>
+			</Link>
 		</div>
 	);
 };
@@ -24,7 +30,6 @@ Profile.getInitialProps = async (ctx) => {
 
 	try {
 		const response = await fetch(apiUrl, {
-			credentials: 'include',
 			headers: {
 				Authorization: token
 			}
