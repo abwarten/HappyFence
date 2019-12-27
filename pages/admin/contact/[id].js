@@ -16,7 +16,7 @@ const Detail = (props) => {
 
 Detail.getInitialProps = async (ctx) => {
 	const { token } = nextCookie(ctx);
-	const apiUrl = `http://localhost:8000/api/v1/contact/${ctx.query.id}`;
+	const apiUrl = `https://happyfence.herokuapp.com/api/v1/contact/${ctx.query.id}`;
 
 	const redirectOnError = () =>
 		typeof window !== 'undefined' ? Router.push('/signin') : ctx.res.writeHead(302, { Location: '/signin' }).end();

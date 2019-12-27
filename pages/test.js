@@ -1,32 +1,26 @@
 import React from 'react';
 import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
-import nextCookie from 'next-cookies';
-import { withAuthSync } from '../../../utils/auth';
 
-import AdminContactList from '../../../components/AdminContactList';
+import ContactDetailPatchButton from '../components/ContactDetailPatchButton';
 
-const AdminContact = (props) => {
+const Test = (props) => {
 	return (
 		<>
-			<AdminContactList props={props}/>
+			<ContactDetailPatchButton props={props}/>
 		</>
 	);
 };
 
-AdminContact.getInitialProps = async (ctx) => {
-	const { token } = nextCookie(ctx);
-	const apiUrl = `https://happyfence.herokuapp.com/api/v1/contact/`;
+Test.getInitialProps = async (ctx) => {
+	const apiUrl = `http://localhost:8000/api/v1/contact/`;
 
 	const redirectOnError = () =>
 		typeof window !== 'undefined' ? Router.push('/signin') : ctx.res.writeHead(302, { Location: '/signin' }).end();
 
 	try {
 		const response = await fetch(apiUrl, {
-			method: 'GET',
-			headers: {
-				Authorization: 'Token ' + token
-			}
+			method: 'GET'
 		});
 
 		if (response.ok) {
@@ -40,4 +34,4 @@ AdminContact.getInitialProps = async (ctx) => {
 	}
 };
 
-export default withAuthSync(AdminContact);
+export default Test;

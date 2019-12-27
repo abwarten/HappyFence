@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 import { login } from '../utils/auth';
-import nextCookie from 'next-cookies';
-import Router from 'next/router';
 
 function Login() {
 	const [ userData, setUserData ] = useState({ username: '', password: '', error: '' });
@@ -13,7 +11,7 @@ function Login() {
 
 		const username = userData.username;
 		const password = userData.password;
-		const url = `http://127.0.0.1:8000/api/v1/auth/login/`;
+		const url = `https://happyfence.herokuapp.com/api/v1/auth/login/`;
 
 		try {
 			const response = await fetch(url, {
@@ -70,16 +68,5 @@ function Login() {
 		</div>
 	);
 }
-
-Login.getInitialProps = async (ctx) => {
-	const { token } = nextCookie(ctx);
-
-	const redirectOnAdmin = () =>
-		typeof window !== 'undefined' ? Router.push('/admin') : ctx.res.writeHead(302, { Location: '/admin' }).end();
-
-	if (token !== undefined) {
-		redirectOnAdmin();
-	}
-};
 
 export default Login;

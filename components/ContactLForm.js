@@ -43,7 +43,7 @@ class ContactForm extends React.Component {
 	async handleSubmit(e) {
 		e.preventDefault ? e.preventDefault() : (e.returnValue = false);
 
-		const url = `http://127.0.0.1:8000/api/v1/contact/`;
+		const url = `https://happyfence.herokuapp.com/api/v1/contact/`;
 		console.log(JSON.stringify(this.state));
 		try {
 			const response = await fetch(url, {

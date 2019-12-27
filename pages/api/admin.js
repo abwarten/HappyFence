@@ -10,7 +10,7 @@ export default async (req, res) => {
 	try {
 		const token = auth;
 
-		const url = `http://127.0.0.1:8000/api/v1/user/`;
+		const url = `https://happyfence.herokuapp.com/api/v1/auth/user/`;
 
 		const response = await fetch(url, {
 			method: 'GET',
