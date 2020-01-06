@@ -4,19 +4,19 @@ import fetch from 'isomorphic-unfetch';
 import nextCookie from 'next-cookies';
 import { withAuthSync } from '../../../utils/auth';
 
-import AdminContactList from '../../../components/AdminContactList';
+import ContactIndex from '../../../components/ContactIndex';
 
 const AdminContact = (props) => {
 	return (
 		<>
-			<AdminContactList props={props}/>
+			<ContactIndex />
 		</>
 	);
 };
 
 AdminContact.getInitialProps = async (ctx) => {
 	const { token } = nextCookie(ctx);
-	const apiUrl = `https://happyfence.herokuapp.com/api/v1/contact/`;
+	const apiUrl = `http://localhost:8000/api/v1/contact/`;
 
 	const redirectOnError = () =>
 		typeof window !== 'undefined' ? Router.push('/signin') : ctx.res.writeHead(302, { Location: '/signin' }).end();

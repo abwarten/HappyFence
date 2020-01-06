@@ -11,7 +11,7 @@ function Register() {
 
 		const username = userData.username;
 		const password = userData.password;
-		const url = `https://happyfence.herokuapp.com/api/v1/auth/register/`;
+		const url = `http://localhost:8000/api/v1/auth/register/`;
 
 		try {
 			const response = await fetch(url, {

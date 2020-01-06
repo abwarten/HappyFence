@@ -9,7 +9,7 @@ const Images = (props) => {
 	return (
 		<div>
 			{props.results.map((data) => {
-				const image_path = 'https://happyfence.herokuapp.com/media/' + data.image;
+				const image_path = 'http://localhost:8000/media/' + data.image;
 				return (
 					<div key={data.id}>
 						<p>{data.id}</p>
@@ -26,7 +26,7 @@ Images.getInitialProps = async (ctx) => {
 	const { token } = nextCookie(ctx);
 	const year = moment().format('YYYY');
 	const month = moment().format('MM');
-	const apiUrl = `https://happyfence.herokuapp.com/api/v1/today/?year=${year}&month=${month}`;
+	const apiUrl = `http://localhost:8000/api/v1/today/?year=${year}&month=${month}`;
 
 	const redirectOnError = () =>
 		typeof window !== 'undefined' ? Router.push('/signin') : ctx.res.writeHead(302, { Location: '/signin' }).end();

@@ -1,19 +1,13 @@
 import NavList from '../components/NavList'
-import ContactLForm from '../components/ContactLForm'
+import ContactPageIndex from '../components/ContactPageIndex'
 import Footer from '../components/Footer'
 
 class contact extends React.Component {
-
-  constructor(props) {
-    super(props)
-   
-  }
-
   render() {
     return (
       <>
         <NavList />
-        <ContactLForm />
+        <ContactPageIndex />
         <Footer/>
         <style jsx global>{`
           body {
